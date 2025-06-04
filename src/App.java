@@ -1,3 +1,4 @@
+import controllers.Controller;
 import models.Model;
 import views.View;
 
@@ -9,6 +10,10 @@ public class App {
             public void run() {
                 Model model = new Model();
                 View view = new View(model);
+                Controller controller = new Controller(model, view);
+
+                // Hiire liikumise aktiveerimiseks
+                view.registerGameBoardMouse(controller);
 
 
                 view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
