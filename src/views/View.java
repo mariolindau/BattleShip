@@ -82,4 +82,8 @@ public class View extends JFrame {
     public void registerNewGameButton(ActionListener actionListener) {
         infoBoard.getBtnNewGame().addActionListener(actionListener);
     }
+
+    public void registerScoreBoardButton(ActionListener actionListener) {
+        infoBoard.getBtnScoreBoard().addActionListener(actionListener);
+    }
 }

@@ -41,6 +41,11 @@ public class GameBoard extends JPanel {
         // Vasakule serva numbrid ruutudega
         drawRowColumn(g);
 
+        // TODO pOLE KÕIGE PAREM LAHENDUS
+        if(model.getGame() != null && !model.getGame().isGameOver()) {
+            model.drawUserBoard(g);
+        }
+
         // Puuduv osa mängulauast
         drawGameGrid(g);
     }
