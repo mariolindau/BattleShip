@@ -210,4 +210,9 @@ public class Model {
         return game;
     }
 
+    public void resetGame() {
+        this.game = null;
+        this.gridData.clear();
+    }
+
 }

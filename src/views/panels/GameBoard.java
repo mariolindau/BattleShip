@@ -42,7 +42,7 @@ public class GameBoard extends JPanel {
         drawRowColumn(g);
 
         // TODO pOLE KÕIGE PAREM LAHENDUS
-        if(model.getGame() != null && !model.getGame().isGameOver()) {
+        if(model.getGame() != null) {
             model.drawUserBoard(g);
         }
 

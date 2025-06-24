@@ -15,8 +15,9 @@ public class App {
                 // Hiire liikumise aktiveerimiseks
                 view.registerGameBoardMouse(controller);
 
-
                 view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                // Akna miinimum suuruse määramine
+                view.setMinimumSize(new java.awt.Dimension(850, 550));
                 view.pack();
                 view.setLocationRelativeTo(null); // ekraani keskele
                 view.setVisible(true); // Tee JFrame nähtavaks

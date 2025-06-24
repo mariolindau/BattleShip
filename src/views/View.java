@@ -14,10 +14,17 @@ public class View extends JFrame {
     private Model model;
     private GameBoard gameBoard; // Mängulaud
     private InfoBoard infoBoard; // Teadetetahvel
+    private JPanel pnlScoreBoard;
+    private JTable tblScoreBoard;
+    private JButton btnCloseScoreBoard;
 
     public View(Model model) {
         super("laevade pommitamine"); //Akna nimi
         this.model = model;
+
+        pnlScoreBoard = new JPanel();
+        tblScoreBoard = new JTable();
+        btnCloseScoreBoard = new JButton("Sulge");
 
         gameBoard = new GameBoard(model); // Mängulaua loomine
         infoBoard = new InfoBoard();
@@ -71,6 +78,7 @@ public class View extends JFrame {
 
     public JCheckBox getChkWhere() { return infoBoard.getChkWhere(); }
 
+    // Listenerid
     public void registerGameBoardMouse(Controller controller) {
         gameBoard.addMouseListener(controller);
         gameBoard.addMouseMotionListener(controller);
@@ -86,4 +94,38 @@ public class View extends JFrame {
     public void registerScoreBoardButton(ActionListener actionListener) {
         infoBoard.getBtnScoreBoard().addActionListener(actionListener);
     }
+    // Lukustus mängu ajal
+    public void setControlsEnabled(boolean enabled) {
+        getBtnScoreBoard().setEnabled(!enabled);    //"Edetabelinupp
+        getCmbSize().setEnabled(!enabled);          // suuruse valik
+    }
+    public void initScoreBoardPanel(JPanel panel, JTable table, JButton btnClose) {
+        panel.removeAll(); // Eemalda vana sisu
+        panel.setLayout(new BorderLayout());
+        panel.add(new JScrollPane(table), BorderLayout.CENTER);
+        panel.add(btnClose, BorderLayout.SOUTH);
+        panel.setVisible(true);
+        this.add(panel, BorderLayout.EAST);
+        this.revalidate();
+        this.repaint();
+    }
+
+    public JPanel getPnlScoreBoard() {
+        return pnlScoreBoard;
+    }
+
+    public JTable getTblScoreBoard() {
+        return tblScoreBoard;
+    }
+
+    public JButton getBtnCloseScoreBoard() {
+        return btnCloseScoreBoard;
+    }
+    public JCheckBox getChkSeparateWindow() {
+        return infoBoard.getChkWhere();
+    }
+    public void hideScorePanel() {
+        pnlScoreBoard.setVisible(false);
+    }
+
 }

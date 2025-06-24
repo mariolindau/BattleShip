@@ -196,4 +196,17 @@ public class Game {
     public void setClickCounter(int clickCounter) {
         this.clickCounter += clickCounter;
     }
+    /**
+     * Eemaldab kõik märgitud väljad mängulaualt (nt 7, 8 – pihtas, möödas).
+     * Seda kasutatakse siis, kui alustatakse uut mängu.
+     */
+    public void resetBoard() {
+        for (int row = 0; row < boardSize; row++) {
+            for (int col = 0; col < boardSize; col++) {
+                if (boardMatrix[row][col] == 7 || boardMatrix[row][col] == 8) {
+                    boardMatrix[row][col] = 0; // Tühjenda ainult kasutaja tegevuse märgistus
+                }
+            }
+        }
+    }
 }
